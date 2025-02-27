@@ -115,6 +115,9 @@ Extend the Loan Management System to include an interest calculation engine and 
      - Pagination for large transaction sets
 
 5. **Interest Calculation Logic**
+   - Use the "Actual/365" day count convention for all interest calculations
+     - This means using the actual number of days in the interest period divided by 365 days
+     - For leap years, still use 365 as the denominator (not 366)
    - Implement the following interest calculation methods:
      - Simple interest
      - Compound interest based on the accrual frequency
@@ -122,11 +125,13 @@ Extend the Loan Management System to include an interest calculation engine and 
      - Partial periods
      - Leap years
      - Multiple drawdowns within a single interest period
+   - Formula for daily interest: Principal × (Interest Rate / 365) × Actual Days in Period
 
 6. **Testing**
    - Write comprehensive unit tests for the interest calculation logic
    - Include integration tests for the API endpoints
    - Add UI tests for the new components
+   - Include specific test cases for the "Actual/365" methodology, verifying calculations across month and year boundaries
 
 ### Evaluation Criteria
 
@@ -143,9 +148,10 @@ Your submission will be evaluated based on:
    - Separation of concerns between UI, API, and business logic
 
 3. **Financial Accuracy**
-   - Correct implementation of interest calculations
+   - Correct implementation of "Actual/365" interest calculations
    - Proper handling of financial edge cases
    - Accuracy in the generated schedule
+   - Precision in decimal calculations (use appropriate rounding strategies for financial calculations)
 
 4. **User Experience**
    - Intuitive UI for viewing complex financial data
