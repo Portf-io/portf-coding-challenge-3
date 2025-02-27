@@ -70,6 +70,104 @@ The application uses SQLite for data persistence. The database file is created a
 - `loans` table - Stores loan details like term, interest rate, and payment frequencies
 - `drawdowns` table - Stores drawdown amounts and dates, linked to loans via foreign key
 
+## Take-Home Test Instructions (Senior Engineer)
+
+### Objective
+Extend the Loan Management System to include an interest calculation engine and transaction schedule. This will demonstrate your ability to implement complex business logic, work with financial calculations, and integrate new features into an existing codebase.
+
+### Requirements
+
+1. **Interest Schedule Generation**
+   - Create a new API endpoint `/api/loans/{id}/schedule` that generates an interest payment schedule for a loan
+   - The schedule should account for:
+     - Multiple drawdowns at different dates
+     - The loan's interest rate
+     - Interest payment frequency (monthly/quarterly/yearly)
+     - Interest accrual frequency (daily/monthly)
+     - The loan term in months
+
+2. **Transaction Model**
+   - Design and implement a transaction model that includes:
+     - Drawdowns (money borrowed)
+     - Interest accruals
+     - Interest payments
+     - Principal repayments
+   - Each transaction should have:
+     - Transaction type
+     - Amount
+     - Date
+     - Running balance
+     - Reference to the loan
+
+3. **Database Schema**
+   - Extend the database schema to store transactions
+   - Create appropriate indexes for efficient querying
+
+4. **UI Implementation**
+   - Create a new page to display the interest schedule for a specific loan
+   - Include a summary section showing:
+     - Total interest over the life of the loan
+     - Average interest per payment
+     - Final payment date
+   - Implement a transaction table with:
+     - Filtering by transaction type
+     - Sorting by date or amount
+     - Pagination for large transaction sets
+
+5. **Interest Calculation Logic**
+   - Implement the following interest calculation methods:
+     - Simple interest
+     - Compound interest based on the accrual frequency
+   - Handle edge cases such as:
+     - Partial periods
+     - Leap years
+     - Multiple drawdowns within a single interest period
+
+6. **Testing**
+   - Write comprehensive unit tests for the interest calculation logic
+   - Include integration tests for the API endpoints
+   - Add UI tests for the new components
+
+### Evaluation Criteria
+
+Your submission will be evaluated based on:
+
+1. **Code Quality**
+   - Clean, maintainable code following best practices
+   - Proper error handling and edge case management
+   - Effective use of TypeScript for type safety
+
+2. **System Design**
+   - Appropriate architecture for the new features
+   - Efficient database schema and query design
+   - Separation of concerns between UI, API, and business logic
+
+3. **Financial Accuracy**
+   - Correct implementation of interest calculations
+   - Proper handling of financial edge cases
+   - Accuracy in the generated schedule
+
+4. **User Experience**
+   - Intuitive UI for viewing complex financial data
+   - Responsive design that works on various screen sizes
+   - Appropriate loading states and error handling
+
+5. **Testing**
+   - Comprehensive test coverage
+   - Edge case testing
+   - Performance testing for large datasets
+
+### Submission Guidelines
+
+1. Fork this repository
+2. Implement the required features
+3. Submit a pull request with your changes
+4. Include a README explaining your approach, any assumptions made, and instructions for running your solution
+5. Be prepared to discuss your implementation in a follow-up interview
+
+### Time Expectation
+We expect this task to take approximately 4-6 hours for a senior engineer. Please don't spend more than 8 hours on this task.
+
 ## License
 
 MIT
