@@ -7,6 +7,7 @@ export const loans = sqliteTable('loans', {
   interestRate: real('interest_rate').notNull(), // percentage
   interestPaymentFrequency: text('interest_payment_frequency', { enum: ['monthly', 'quarterly', 'yearly'] }).notNull(),
   interestAccrualFrequency: text('interest_accrual_frequency', { enum: ['daily', 'monthly'] }).notNull(),
+  loanType: text('loan_type', { enum: ['bullet'] }).notNull().default('bullet'),
   createdAt: integer('created_at', { mode: 'timestamp' }).notNull().$defaultFn(() => new Date()),
 });
 

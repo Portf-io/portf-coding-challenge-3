@@ -9,6 +9,7 @@ export interface SavedLoan {
   interestRate: number;
   interestPaymentFrequency: string;
   interestAccrualFrequency: string;
+  loanType: string;
   createdAt: Date;
   drawdowns: SavedDrawdown[];
 }
@@ -31,6 +32,7 @@ export async function saveLoan(loanData: LoanFormData): Promise<number> {
     interestRate: loanData.interestRate,
     interestPaymentFrequency: loanData.interestPaymentFrequency,
     interestAccrualFrequency: loanData.interestAccrualFrequency,
+    loanType: loanData.loanType || 'bullet',
   }).returning({ id: loans.id });
 
   // Get the inserted loan ID
@@ -74,6 +76,7 @@ export async function getAllLoans(): Promise<SavedLoan[]> {
       interestRate: loan.interestRate,
       interestPaymentFrequency: loan.interestPaymentFrequency as string,
       interestAccrualFrequency: loan.interestAccrualFrequency as string,
+      loanType: loan.loanType as string,
       createdAt: new Date(loan.createdAt),
       drawdowns: drawdownRecords.map(d => ({
         id: d.id,
@@ -110,6 +113,7 @@ export async function getLoanById(id: number): Promise<SavedLoan | null> {
     interestRate: loanRecord.interestRate,
     interestPaymentFrequency: loanRecord.interestPaymentFrequency as string,
     interestAccrualFrequency: loanRecord.interestAccrualFrequency as string,
+    loanType: loanRecord.loanType as string,
     createdAt: new Date(loanRecord.createdAt),
     drawdowns: drawdownRecords.map(d => ({
       id: d.id,

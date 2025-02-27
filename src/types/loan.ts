@@ -5,6 +5,7 @@ export interface Drawdown {
 
 export type InterestPaymentFrequency = 'monthly' | 'quarterly' | 'yearly';
 export type InterestAccrualFrequency = 'daily' | 'monthly';
+export type LoanType = 'bullet';
 
 export interface LoanFormData {
   drawdowns: Drawdown[];
@@ -12,4 +13,5 @@ export interface LoanFormData {
   interestRate: number; // percentage
   interestPaymentFrequency: InterestPaymentFrequency;
   interestAccrualFrequency: InterestAccrualFrequency;
+  loanType: LoanType; // bullet loan
 } 

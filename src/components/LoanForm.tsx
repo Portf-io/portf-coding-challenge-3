@@ -36,6 +36,7 @@ const formSchema = z.object({
   interestRate: z.number().min(0, 'Interest rate must be positive'),
   interestPaymentFrequency: z.enum(['monthly', 'quarterly', 'yearly']),
   interestAccrualFrequency: z.enum(['daily', 'monthly']),
+  loanType: z.enum(['bullet']),
 });
 
 export function LoanForm() {
@@ -52,6 +53,7 @@ export function LoanForm() {
       interestRate: 5,
       interestPaymentFrequency: 'monthly',
       interestAccrualFrequency: 'daily',
+      loanType: 'bullet',
     },
   });
 
@@ -93,6 +95,30 @@ export function LoanForm() {
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <FormField
+            control={form.control}
+            name="loanType"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Loan Type</FormLabel>
+                <Select onValueChange={field.onChange} defaultValue={field.value} disabled>
+                  <FormControl>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select loan type" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    <SelectItem value="bullet">Bullet Loan</SelectItem>
+                  </SelectContent>
+                </Select>
+                <p className="text-sm text-gray-500 mt-1">
+                  Bullet loan: Principal is repaid in full at the end of the loan term
+                </p>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
           <FormField
             control={form.control}
             name="drawdowns"

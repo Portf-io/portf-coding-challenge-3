@@ -19,6 +19,7 @@ export function initDatabase() {
       interest_rate REAL NOT NULL,
       interest_payment_frequency TEXT NOT NULL,
       interest_accrual_frequency TEXT NOT NULL,
+      loan_type TEXT NOT NULL DEFAULT 'bullet',
       created_at INTEGER NOT NULL DEFAULT (unixepoch())
     );
 

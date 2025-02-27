@@ -83,6 +83,7 @@ export default function LoansPage() {
                   <h3 className="text-lg font-semibold mb-2">Loan #{loan.id}</h3>
                   <div className="grid grid-cols-2 gap-4">
                     <div>
+                      <p><span className="font-medium">Type:</span> {loan.loanType === 'bullet' ? 'Bullet Loan' : loan.loanType}</p>
                       <p><span className="font-medium">Term:</span> {loan.loanTerm} months</p>
                       <p><span className="font-medium">Interest Rate:</span> {loan.interestRate}%</p>
                       <p><span className="font-medium">Payment Frequency:</span> {loan.interestPaymentFrequency}</p>

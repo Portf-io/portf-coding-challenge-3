@@ -10,6 +10,7 @@ A simple Next.js application for capturing and managing loan details.
   - Interest rate percentage
   - Interest payment frequency (monthly/quarterly/yearly)
   - Interest accrual frequency (daily/monthly)
+  - Bullet loan structure (principal repaid in full at maturity)
 - Form validation using Zod
 - API endpoints for form submission and data retrieval
 - SQLite database for persistent storage
@@ -85,13 +86,14 @@ Extend the Loan Management System to include an interest calculation engine and 
      - Interest payment frequency (monthly/quarterly/yearly)
      - Interest accrual frequency (daily/monthly)
      - The loan term in months
+   - All loans are structured as bullet loans, where the principal is repaid in full at the end of the loan term
 
 2. **Transaction Model**
    - Design and implement a transaction model that includes:
      - Drawdowns (money borrowed)
      - Interest accruals
      - Interest payments
-     - Principal repayments
+     - Principal repayment (single payment at the end of the loan term)
    - Each transaction should have:
      - Transaction type
      - Amount
@@ -114,7 +116,7 @@ Extend the Loan Management System to include an interest calculation engine and 
      - Date (when the transaction occurred)
      - Loan Principal (the total principal amount at that point in time)
    
-   Example transaction table:
+   Example transaction table for a bullet loan:
    
    ```
    | Date       | Transaction Type   | Amount     | Loan Principal |
@@ -133,6 +135,7 @@ Extend the Loan Management System to include an interest calculation engine and 
    | 2023-06-15 | Interest Payment  | $62.50     | $15,000.00     |
    | 2023-06-15 | Principal Repayment | $15,000.00 | $0.00        |
    ```
+   Note: In a bullet loan structure, the principal remains unchanged until the final repayment at maturity.
 
 5. **Interest Calculation Logic**
    - Use the "Actual/365" day count convention for all interest calculations
