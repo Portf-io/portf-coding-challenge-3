@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -38,6 +39,7 @@ const formSchema = z.object({
 });
 
 export function LoanForm() {
+  const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitResult, setSubmitResult] = useState<{ success: boolean; message: string } | null>(null);
 
@@ -68,6 +70,13 @@ export function LoanForm() {
 
       const result = await response.json();
       setSubmitResult(result);
+      
+      if (result.success) {
+        // Redirect to the loans page after a short delay
+        setTimeout(() => {
+          router.push('/loans');
+        }, 1500);
+      }
     } catch {
       setSubmitResult({
         success: false,

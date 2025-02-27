@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { saveLoan } from '@/db/loanService';
 
 export async function POST(request: Request) {
   try {
@@ -7,12 +8,13 @@ export async function POST(request: Request) {
     // Log the form data
     console.log('Loan form submission:', formData);
     
-    // In a real application, you would process the loan data here
-    // For example, save to a database, perform calculations, etc.
+    // Save the loan data to the database
+    const loanId = await saveLoan(formData);
     
     return NextResponse.json({ 
       success: true, 
-      message: 'Loan details received successfully' 
+      message: 'Loan details received and saved successfully',
+      loanId
     });
   } catch (error) {
     console.error('Error processing loan form:', error);
