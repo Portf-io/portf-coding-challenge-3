@@ -96,7 +96,6 @@ Extend the Loan Management System to include an interest calculation engine and 
      - Transaction type
      - Amount
      - Date
-     - Running balance
      - Reference to the loan
 
 3. **Database Schema**
@@ -118,9 +117,7 @@ Extend the Loan Management System to include an interest calculation engine and 
    - Use the "Actual/365" day count convention for all interest calculations
      - This means using the actual number of days in the interest period divided by 365 days
      - For leap years, still use 365 as the denominator (not 366)
-   - Implement the following interest calculation methods:
-     - Simple interest
-     - Compound interest based on the accrual frequency
+   - Implement simple interest calculation
    - Handle edge cases such as:
      - Partial periods
      - Leap years
