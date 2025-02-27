@@ -108,10 +108,31 @@ Extend the Loan Management System to include an interest calculation engine and 
      - Total interest over the life of the loan
      - Average interest per payment
      - Final payment date
-   - Implement a transaction table with:
-     - Filtering by transaction type
-     - Sorting by date or amount
-     - Pagination for large transaction sets
+   - Implement a transaction table with the following columns:
+     - Transaction type (Drawdown, Interest Accrual, Interest Payment, Principal Repayment)
+     - Amount (the transaction amount)
+     - Date (when the transaction occurred)
+     - Loan Principal (the total principal amount at that point in time)
+   
+   Example transaction table:
+   
+   ```
+   | Date       | Transaction Type   | Amount     | Loan Principal |
+   |------------|-------------------|------------|----------------|
+   | 2023-01-15 | Drawdown          | $10,000.00 | $10,000.00     |
+   | 2023-02-15 | Interest Accrual  | $41.67     | $10,000.00     |
+   | 2023-02-15 | Interest Payment  | $41.67     | $10,000.00     |
+   | 2023-03-01 | Drawdown          | $5,000.00  | $15,000.00     |
+   | 2023-03-15 | Interest Accrual  | $62.50     | $15,000.00     |
+   | 2023-03-15 | Interest Payment  | $62.50     | $15,000.00     |
+   | 2023-04-15 | Interest Accrual  | $62.50     | $15,000.00     |
+   | 2023-04-15 | Interest Payment  | $62.50     | $15,000.00     |
+   | 2023-05-15 | Interest Accrual  | $62.50     | $15,000.00     |
+   | 2023-05-15 | Interest Payment  | $62.50     | $15,000.00     |
+   | 2023-06-15 | Interest Accrual  | $62.50     | $15,000.00     |
+   | 2023-06-15 | Interest Payment  | $62.50     | $15,000.00     |
+   | 2023-06-15 | Principal Repayment | $15,000.00 | $0.00        |
+   ```
 
 5. **Interest Calculation Logic**
    - Use the "Actual/365" day count convention for all interest calculations
