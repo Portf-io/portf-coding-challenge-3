@@ -89,16 +89,16 @@ Extend the Loan Management System to include an interest calculation engine and 
    - All loans are structured as bullet loans, where the principal is repaid in full at the end of the loan term
 
 2. **Transaction Model**
-   - Design and implement a transaction model that includes:
+   - Design and implement a database schema for transactions that supports these transaction types:
      - Drawdowns (money borrowed)
-     - Interest accruals
-     - Interest payments
+     - Interest accruals (calculated interest)
+     - Interest payments (paid interest)
      - Principal repayment (single payment at the end of the loan term)
-   - Each transaction should have:
-     - Transaction type
-     - Amount
-     - Date
-     - Reference to the loan
+   - Each transaction record should include these fields:
+     - Transaction type (identifying which of the above types it is)
+     - Amount (the monetary value)
+     - Date (when the transaction occurred)
+     - Reference to the loan (foreign key to the loans table)
 
 3. **Database Schema**
    - Extend the database schema to store transactions
