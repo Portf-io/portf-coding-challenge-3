@@ -111,7 +111,7 @@ Extend the Loan Management System to include an interest calculation engine and 
      - Average interest per payment
      - Final payment date
    - Implement a transaction table with the following columns:
-     - Transaction type (Drawdown, Interest Accrual, Interest Payment, Principal Repayment)
+     - Transaction type (Drawdown, Interest Payment, Principal Repayment)
      - Amount (the transaction amount)
      - Date (when the transaction occurred)
      - Loan Principal (the total principal amount at that point in time)
@@ -180,9 +180,8 @@ Your submission will be evaluated based on:
    - Appropriate loading states and error handling
 
 5. **Testing**
-   - Comprehensive test coverage
-   - Edge case testing
-   - Performance testing for large datasets
+   - Test coverage (inc. Edge case testing)
+   - Performance testing for large datasets (Bonus)
 
 ### Submission Guidelines
 
