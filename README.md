@@ -71,7 +71,7 @@ The application uses SQLite for data persistence. The database file is created a
 - `loans` table - Stores loan details like term, interest rate, and payment frequencies
 - `drawdowns` table - Stores drawdown amounts and dates, linked to loans via foreign key
 
-## Take-Home Test Instructions (Senior Engineer)
+## Take-Home Test Instructions
 
 ### Objective
 Extend the Loan Management System to include an interest calculation engine and transaction schedule. This will demonstrate your ability to implement complex business logic, work with financial calculations, and integrate new features into an existing codebase.
